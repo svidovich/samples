@@ -11,6 +11,15 @@ services:
       - "5432:5432"
     volumes:
       - database-volume:/var/lib/postgresql  # mount a volume for persistent storage
+  pgadmin:
+    image: dpage/pgadmin4:5.0  # Pin for no good reason
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - "80:80"
+      - "443:443"
+
 
 volumes:
   database-volume:
