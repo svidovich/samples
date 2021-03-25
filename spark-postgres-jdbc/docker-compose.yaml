@@ -24,6 +24,11 @@ services:
       - SPARK_SSL_ENABLED=no
     ports:
       - '8080:8080'
+    volumes:
+      - type: bind
+        source: ./pyspark_code
+        target: /opt/bitnami/spark/pyspark_code
+
   spark-worker:
     image: docker.io/bitnami/spark:3-debian-10
     environment:
