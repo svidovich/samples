@@ -6,7 +6,17 @@ spark_session = SparkSession.builder.getOrCreate()
 
 
 def main():
-    pass
+    sample_dataframe = spark_context.parallelize(
+        [
+            {
+                'first_name': 'Jeff',
+                'last_name': 'Lebowski',
+                'nickname': 'The Dude',
+            }
+        ]
+    ).toDF()
+
+    sample_dataframe.show()
 
 
 if __name__ == '__main__':

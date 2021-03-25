@@ -28,6 +28,9 @@ services:
       - type: bind
         source: ./pyspark_code
         target: /opt/bitnami/spark/pyspark_code
+      - type: bind
+        source: ./scripts
+        target: /opt/bitnami/spark/scripts
 
   spark-worker:
     image: docker.io/bitnami/spark:3-debian-10
