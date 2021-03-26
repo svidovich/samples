@@ -9,4 +9,4 @@ if [ -z $1 ]; then
     exit 1
 fi
 
-spark-submit $1 --jars /opt/bitnami/spark/jars/postgresql.jar
+spark-submit --driver-class-path /opt/bitnami/spark/jars/postgresql.jar --jars /opt/bitnami/spark/jars/postgresql.jar $1
