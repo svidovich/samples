@@ -11,6 +11,7 @@ services:
       - "5432:5432"
     volumes:
       - database-volume:/var/lib/postgresql  # mount a volume for persistent storage
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql  # Database startup script
 
   spark:
     build:
@@ -26,11 +27,8 @@ services:
       - '8080:8080'
     volumes:
       - type: bind
-        source: ./pyspark_code
-        target: /opt/bitnami/spark/pyspark_code
-      - type: bind
-        source: ./scripts
-        target: /opt/bitnami/spark/scripts
+        source: ./spark
+        target: /opt/bitnami/spark/spark_user
 
   spark-worker:
     image: docker.io/bitnami/spark:3-debian-10
