@@ -18,6 +18,8 @@ services:
       context: .
       dockerfile: master.dockerfile
     environment:
+      - SPARK_DATABASE_USER=${SPARK_DATABASE_USER}
+      - SPARK_DATABASE_PASSWORD=${SPARK_DATABASE_PASSWORD}
       - SPARK_MODE=master
       - SPARK_RPC_AUTHENTICATION_ENABLED=no
       - SPARK_RPC_ENCRYPTION_ENABLED=no
