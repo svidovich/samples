@@ -5,4 +5,9 @@ COPY requirements-queues.txt requirements.txt
 RUN pip3 install -r requirements.txt
 COPY src/lib /src/lib
 COPY src/rabbit /src/rabbit
+# TODO Probably don't do this.
 RUN rabbitmq-plugins enable rabbitmq_management
+
+ENV RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmq.conf
+COPY rabbit-definitions.json /etc/rabbitmq/definitions.json
+COPY rabbitmq.conf ${RABBITMQ_CONFIG_FILE}}
